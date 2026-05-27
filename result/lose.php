@@ -7,7 +7,7 @@
 // Test & voorbeeld
 
 $naam = 'Piraat';
-$verloren = isset($_GET['verloren']) ? max(0, (int) $_GET['verloren']) : 320;
+$verloren = isset($_GET['verloren']) ? max(0, (int) $_GET['verloren']) : -320;
 
 $naam = htmlspecialchars($naam, ENT_QUOTES, 'UTF-8');
 ?>

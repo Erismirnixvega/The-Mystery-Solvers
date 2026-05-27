@@ -16,6 +16,7 @@
             justify-content: center;
             background: #0b1d2a;
             color: #f8f1dd;
+            
     }
 
     .win_body, .lose_body p {
@@ -42,6 +43,7 @@
             font-family: "Pirata One", system-ui;
             font-weight: 400;
             font-style: normal;
+            text-shadow: 0 0 10px rgba(255, 209, 102, 0.3);
     }
   
 
@@ -72,6 +74,12 @@
             text-decoration: none;
             font-weight: bold;
     }
+    
+    .win_button:hover {
+            background: #edd18a;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(212, 165, 72, 0.3);
+    }
 
 
     .lose_body {
@@ -84,6 +92,7 @@
             color: #f8f1dd;
             font-family: Georgia, serif;
             animation: fadeIn 0.6s ease-in-out;
+            
     }
 
 
@@ -143,6 +152,8 @@
 
     .lose_button:hover {
             background: #ff6b6b;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(212, 165, 72, 0.3);
     }
 
 

@@ -1,5 +1,9 @@
 <?php
+
+
 require_once('../dbcon.php');
+
+
 
 try {
   $stmt = $conn->query("SELECT * FROM riddles WHERE roomId = 1");
@@ -7,6 +11,17 @@ try {
 } catch (PDOException $e) {
   die("Databasefout: " . $e->getMessage());
 }
+
+session_start();
+
+
+$_SESSION["score"] = "0";
+
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +45,8 @@ try {
       Box <?php echo $index + 1; ?>
     </div>
     <?php endforeach; ?>
+
+ 
   </div>
 
   
@@ -40,9 +57,23 @@ try {
   <section class="modal" id="modal">
     <h2>Escape Room Vraag</h2>
     <p id="riddle"></p>
-    <input type="text" id="answer" placeholder="Typ je antwoord">
-    <button onclick="checkAnswer()">Verzenden</button>
+    <form method="post" id="form" onsubmit="return checkAnswer()">
+      <input type="text" id="answer" placeholder="Typ je antwoord">
+      <input type="hidden" name="number" id="number"> 
+      <button type="submit" onclick="checkAnswer()">Verzenden</button>
+    </form>
+
+    <?php 
+          $score = '0';
+          if (isset($_POST['number'])) {
+             $score = $_POST['number'];
+             $_SESSION['score'] = $score;
+             $total = $_SESSION['score'];
+             echo $total;
+          }  
+    ?>
     <p id="feedback"></p>
+
   </section>
 
   <script src="../js/app.js"></script>
