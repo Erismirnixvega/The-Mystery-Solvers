@@ -1,3 +1,5 @@
+let score = 0;
+
 // Deze functie opent de modal en toont de vraag
 function openModal(index) {
   // Zoek het element met de class 'box' en het bijbehorende data-index
@@ -15,6 +17,7 @@ function openModal(index) {
 
   // Maak het antwoordveld leeg
   document.getElementById('answer').value = '';
+  document.getElementById('number').value = '';
 
   // Toon de overlay en de modal door de display-stijl te veranderen naar 'block'
   document.getElementById('overlay').style.display = 'block';
@@ -29,6 +32,7 @@ function closeModal() {
 
   // Maak de feedback tekst leeg
   document.getElementById('feedback').innerText = '';
+  
 }
 
 // Deze functie controleert of het ingevoerde antwoord correct is
@@ -42,11 +46,26 @@ function checkAnswer() {
   // Haal het feedback element op om de gebruiker te informeren
   let feedback = document.getElementById('feedback');
 
+
+  let number = document.getElementById('number');
+
+  document.getElementById("form").addEventListener("submit", function(event){
+    event.preventDefault();
+  });
+
   // Vergelijk het antwoord van de gebruiker met het juiste antwoord (hoofdlettergevoeligheid negeren)
   if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
     // Als het antwoord juist is, geef positieve feedback
     feedback.innerText = 'Correct! Goed gedaan!';
     feedback.style.color = 'green';
+
+    let addedscore = score += 100;
+    number.value = addedscore;
+
+
+
+    console.log(addedscore);
+
 
     // Sluit de modal na 1 seconde
     setTimeout(closeModal, 1000);
@@ -54,5 +73,9 @@ function checkAnswer() {
     // Als het antwoord fout is, geef negatieve feedback
     feedback.innerText = 'Fout, probeer opnieuw!';
     feedback.style.color = 'red';
+    
+    let subtractedscore = score -= 100;
+    console.log(subtractedscore);
+    number.value = subtractedscore;
   }
 }
