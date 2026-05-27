@@ -1,0 +1,149 @@
+     
+/* Win/Verlies scherm styling */
+
+    /* Result = Werkt voor allebei */ 
+
+    .win_body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0b1d2a;
+            color: #f8f1dd;
+            font-family: Georgia, serif;
+    }
+
+    .result_p {
+            margin: 8px 0;
+            line-height: 1.5;
+    }
+
+    /* Win = Werkt voor win scherm */ 
+
+
+    .win_card {
+            width: min(420px, calc(100% - 32px));
+            background: #132b3a;
+            border: 2px solid #d4a548;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .win_card h1 {
+            margin: 0 0 10px;
+            color: #ffd166;
+            font-size: 2rem;
+    }
+
+  
+
+    .win_name {
+            font-size: 1.2rem;
+            font-weight: bold;
+    }
+
+    .win_stats {
+            margin: 22px 0;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+    }
+
+    .win_stats div {
+            margin: 8px 0;
+    }
+
+    .win_button {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            background: #d4a548;
+            color: #1d1203;
+            text-decoration: none;
+            font-weight: bold;
+    }
+
+     /* Lose = Werkt voor verlies scherm */ 
+
+    .lose_body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #2d0a0a;
+            color: #f8f1dd;
+            font-family: Georgia, serif;
+            animation: fadeIn 0.6s ease-in-out;
+    }
+
+
+    .lose_card {
+            width: min(420px, calc(100% - 32px));
+            background: #6b1a1a;
+            border: 2px solid #ff4444;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 12px 30px rgba(255, 0, 0, 0.2), 0 0 20px rgba(255, 68, 68, 0.15);
+            text-align: center;
+    }
+
+    .lose_card h1 {
+            margin: 0 0 10px;
+            color: #ff6b6b;
+            font-size: 2rem;
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.4);
+    }
+
+    .lose_name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff9999;
+    }
+
+    .lose_stats {
+            margin: 22px 0;
+            padding: 16px;
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            border-radius: 12px;
+    }
+
+    .lose_stats div {
+            margin: 8px 0;
+            color: #ffaaaa;
+    }
+
+    .lose_button {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            background: #ff4444;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+    }
+
+    .lose_button:hover {
+            background: #ff6b6b;
+    }
+
+
+
+ @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+    }
