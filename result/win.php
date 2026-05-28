@@ -5,11 +5,14 @@
 
     require_once('../dbcon.php');
 
+    session_start();
+
+    $score = $_SESSION['score'];
     
 // Test & voorbeeld
     
     $naam = isset($_GET['naam']) && trim($_GET['naam']) !== '' ? trim($_GET['naam']) : 'Piraat';
-    $score = isset($_GET['score']) ? max(0, (int) $_GET['score']) : 875;
+    
 
     $naam = htmlspecialchars($naam, ENT_QUOTES, 'UTF-8');
 ?>

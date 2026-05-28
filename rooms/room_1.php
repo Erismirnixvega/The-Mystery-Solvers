@@ -3,6 +3,8 @@
 
 require_once('../dbcon.php');
 
+session_start();
+$_SESSION['score'] = 0;
 
 
 try {
@@ -12,13 +14,13 @@ try {
   die("Databasefout: " . $e->getMessage());
 }
 
-session_start();
 
-
-$_SESSION["score"] = "0";
-
-
-
+ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["variableName"])) {
+          $receivedVariable = $_POST["variableName"];
+        
+          $_SESSION['score'] = $receivedVariable;
+          
+  }
 
 
 
@@ -36,6 +38,7 @@ $_SESSION["score"] = "0";
 
 <body>
   <h1>Team: ...</h1>
+  <h2 id="number"></h2>
 
   <div class="container">
     <?php foreach ($riddles as $index => $riddle) : ?>
@@ -49,7 +52,6 @@ $_SESSION["score"] = "0";
  
   </div>
 
-  
 
 
   <section class="overlay" id="overlay" onclick="closeModal()"></section>
@@ -57,23 +59,9 @@ $_SESSION["score"] = "0";
   <section class="modal" id="modal">
     <h2>Escape Room Vraag</h2>
     <p id="riddle"></p>
-    <form method="post" id="form" onsubmit="return checkAnswer()">
-      <input type="text" id="answer" placeholder="Typ je antwoord">
-      <input type="hidden" name="number" id="number"> 
-      <button type="submit" onclick="checkAnswer()">Verzenden</button>
-    </form>
-
-    <?php 
-          $score = '0';
-          if (isset($_POST['number'])) {
-             $score = $_POST['number'];
-             $_SESSION['score'] = $score;
-             $total = $_SESSION['score'];
-             echo $total;
-          }  
-    ?>
+    <input type="text" id="answer" placeholder="Typ je antwoord">
+    <button type="button" onclick="checkAnswer()">Verzenden</button>
     <p id="feedback"></p>
-
   </section>
 
   <script src="../js/app.js"></script>

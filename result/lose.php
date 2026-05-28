@@ -3,11 +3,14 @@
     // Auteur: Arda Yaman
     // Functie: Pagina na verliezen
 
+    session_start();
+
+    $score = $_SESSION['score'];
 
 // Test & voorbeeld
 
 $naam = 'Piraat';
-$verloren = isset($_GET['verloren']) ? max(0, (int) $_GET['verloren']) : -320;
+
 
 $naam = htmlspecialchars($naam, ENT_QUOTES, 'UTF-8');
 ?>
@@ -31,7 +34,7 @@ $naam = htmlspecialchars($naam, ENT_QUOTES, 'UTF-8');
         <p class="lose_name">Arrgh! <?php echo $naam; ?>, jouw avontuur eindigt hier helaas!</p>
 
         <div class="lose_stats">
-            <div><strong>Score verloren:</strong> <?php echo number_format($verloren, 0, ',', '.'); ?></div>
+            <div><strong>Score verloren:</strong> <?php echo number_format($score, 0, ',', '.'); ?></div>
         </div>
 
         <p>De bemanning zingt een droevige piratenmelodie in de nacht.</p>
