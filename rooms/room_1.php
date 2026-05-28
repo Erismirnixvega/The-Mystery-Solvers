@@ -15,15 +15,6 @@ try {
 }
 
 
- if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["variableName"])) {
-          $receivedVariable = $_POST["variableName"];
-        
-          $_SESSION['score'] = $receivedVariable;
-          
-  }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -67,5 +58,18 @@ try {
   <script src="../js/app.js"></script>
 
 </body>
+
+<?php 
+
+
+ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["variableName"])) {
+          $receivedVariable = $_POST["variableName"];
+          echo $receivedVariable;
+          $_SESSION['score'] = $receivedVariable;
+          
+ }
+
+?>
+
 
 </html>

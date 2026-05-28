@@ -19,7 +19,6 @@ function openModal(index) {
 
   // Maak het antwoordveld leeg
   document.getElementById('answer').value = '';
-  document.getElementById('number').value = '';
 
   // Toon de overlay en de modal door de display-stijl te veranderen naar 'block'
   document.getElementById('overlay').style.display = 'block';
@@ -52,25 +51,21 @@ function checkAnswer(index) {
   let feedback = document.getElementById('feedback');
 
 
-  let number = document.getElementById('number');
+  
 
   // Vergelijk het antwoord van de gebruiker met het juiste antwoord (hoofdlettergevoeligheid negeren)
   if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
     // Als het antwoord juist is, geef positieve feedback
 
-   
-
     let addedscore = score += Math.floor(Math.random() * 100) + 50;
-    number.innerText = `Score: ${addedscore}`;
- 
-
+   
     feedback.innerText = 'Correct! Goed gedaan!';
     feedback.style.color = 'green';
 
 
     let datatoSend = "variableName=" + encodeURIComponent(addedscore);
     let xhr = new XMLHttpRequest();
-
+    
     xhr.open("POST", "room_1.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
@@ -94,22 +89,22 @@ function checkAnswer(index) {
     box.remove();
 
     function controlScore() {
-      if (room === 4 && addedscore > 200) {
+      if (room === 4 && addedscore >= 200) {
         window.location.href = "../result/win.php";
       }
-      else if (room === 4 && addedscore < 200) {
+      else if (room === 4 && addedscore <= 200) {
         window.location.href = "../result/lose.php";
       }
     }
     
+
+    // Werkt beter dan setTimeout()
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     async function startProcess() {
-    
-      await delay(5000); 
+      await delay(1000); 
       controlScore();
       
     }
-
     startProcess();
     
   } 
@@ -118,7 +113,7 @@ function checkAnswer(index) {
   else {
 
     let subtractedscore = score -= Math.floor(Math.random() * 50) - 1;
-    number.innerText = `Score: ${subtractedscore}`;
+   
 
     // Als het antwoord fout is, geef negatieve feedback
     feedback.innerText = 'Fout, probeer opnieuw!';
