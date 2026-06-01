@@ -63,6 +63,8 @@ function checkAnswer(index) {
     feedback.style.color = 'green';
 
 
+    // POST request maken via XMLHTTPRequest 
+
     let datatoSend = "variableName=" + encodeURIComponent(addedscore);
     let xhr = new XMLHttpRequest();
     
